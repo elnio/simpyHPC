@@ -1,0 +1,36 @@
+<html>
+    <body>
+    
+     error1 = {{ error1 }}
+     error2 = {{ error2 }}
+     error3 = {{ error3 }}
+
+    {% if  error1     %}
+        
+        <script type="text/javascript">
+            alert("Hello world 1")
+        </script>
+    {% else %}
+        
+        {% if error2 %}
+            <script type="text/javascript">
+            alert("Hello world 2")
+            </script>
+        {% else %}
+            
+            {% if  error3  %}
+                <script type="text/javascript">
+                alert("Hello world 3")
+                </script>
+            {% else %}
+                <script type="text/javascript">
+                alert("This error shouldn't occur.Please contact the administrators")
+                </script>
+            {% endif %}
+
+        {% endif %}
+
+    {% endif %}
+
+    </body>
+</html>

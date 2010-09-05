@@ -1,0 +1,64 @@
+<html>
+    <head>
+        
+        <SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript">
+    function validateuserid(suserid) {
+
+    document.body.style.cursor='wait';
+
+    // Create an instance of the XML HTTP Request object
+    var oXMLHTTP = new XMLHttpRequest(); 
+        
+    // Prepare the XMLHTTP object for a HTTP POST to our validation ASP page
+    var sURL = "http://www.opus-dev.cnl.ncsu.edu:4532/validation/"
+    oXMLHTTP.open( "POST", sURL, false );
+
+    // Execute the request
+    oXMLHTTP.send();
+
+    if (oXMLHTTP.responseText == 'ad') 
+    alert("Sorry - the User ID already exists.");
+
+    document.body.style.cursor='auto';
+    }
+</SCRIPT>
+</head>
+
+<h1> Please fill in the fields below to proceed your simulation</h1>
+
+<form action="/simulation/" enctype="multipart/form-data"  method="POST">
+
+     {% csrf_token %}
+
+     <input type="hidden" name="actualfname" value={{actualfname}} />
+     <input type="hidden" name="className" value={{className}} />
+     <input type="hidden" name="funcName" value={{funcName}} />
+    <ul>
+
+        {% for arg in arg_dict %}
+
+        <li><label for="arg{{ forloop.counter }}">Enter a value for <strong><em>{{arg}}</em></strong> following the formats above:</label> 
+       
+        <input type="text" name="{{arg}}" id=arg{{forloop.counter}} onblur="validateuserid(this.value);" /> </li><br />   
+       
+        {% endfor %}
+    </ul>
+    <input type="submit" value="Proceed to the Simulation" />
+</form> 
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

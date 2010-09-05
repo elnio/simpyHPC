@@ -1,0 +1,38 @@
+<h1> Please fill in the fields below to proceed your simulation</h1>
+
+<form action="/simulation/" enctype="multipart/form-data"  method="POST">
+
+     {% csrf_token %}
+
+     <input type="hidden" name="actualfname" value={{actualfname}} />
+     <input type="hidden" name="className" value={{className}} />
+     <input type="hidden" name="funcName" value={{funcName}} />
+    <ul>
+
+        {% for arg in arg_dict %}
+
+        <li><label for="arg{{ forloop.counter }}">Enter a value for <strong><em>{{arg}}</em></strong> following the formats above:</label> 
+       
+        <input type="text" name="{{arg}}" id=arg{{forloop.counter}} /> </li><br />   
+       
+        {% endfor %}
+    </ul>
+    <input type="submit" value="Proceed to the Simulation" />
+</form> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

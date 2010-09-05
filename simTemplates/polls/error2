@@ -1,0 +1,15 @@
+<html><head>
+<title>(Type a title for your page here)</title>
+<script type="text/javascript">
+function show_alert() {
+var msg = "Welcome to plus2net.com";
+alert(msg);
+}
+</script>
+</head>
+
+<body >
+
+<input type=button value='Click here to display alert message' OnClick="show_alert()">
+
+</body></html>
